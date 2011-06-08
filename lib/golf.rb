@@ -15,37 +15,37 @@ class Golf
      a
    end
   def hole5 v
-    ret = []
-    v.each{|i| ret << [i]}
-    (v.size - 1).times{|i| ret << [v[i], v[i + 1]]}
-    (v.size - 2).times{|i| ret << [v[i], v[i + 1], v[i + 2]]}
-    ret << v
-    ret
+    w = []
+    v.each{|i| w << [i]}
+    (v.size - 1).times{|i| w << [v[i], v[i + 1]]}
+    (v.size - 2).times{|i| w << [v[i], v[i + 1], v[i + 2]]}
+    w << v
+    w
   end
   
   def hole3 s
     s = s.downcase
-    return s == s.reverse
+    s == s.reverse
   end
   
   def hole2 v
-    ret = []
-    (v[0]..v[1]).each do |i|
-      ret << i if hole3(i.to_s) 
-    end
-    ret
+    w = []
+    (v[0]..v[1]).each { |i|
+      w << i if hole3(i.to_s) 
+    }
+    w
   end
   
   def hole6 q
     r = []
-    q.times do |n|
+    q.times { |n|
       n = n + 1
       s = ""
       s << "fizz" if n % 3 == 0
       s << "buzz" if n % 5 == 0
       s = n if s.empty?
       r << s
-    end
+    }
     r
   end
   
@@ -56,21 +56,21 @@ class Golf
   end
   
   def hole7 v
-    ret = []
+    w = []
     l, r = v.first, nil
     v.each do |i|
       if r && i != r + 1
         if l == r
-          ret << "#{r}"
+          w << "#{r}"
         else
-          ret << "#{l}-#{r}"
+          w << "#{l}-#{r}"
         end
         l = i
       end
       r = i
     end
-    ret << "#{l}-#{r}"
-    ret
+    w << "#{l}-#{r}"
+    w
   end
 end
 end
