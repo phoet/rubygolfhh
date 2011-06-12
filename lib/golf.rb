@@ -10,13 +10,8 @@ class Golf
       a.map{|z| z.gsub('cat', 'dead').gsub(/(man.+)/, 'hat(\1)').gsub(/dog\((.+)\)/, 'dog(\1(bone))') }
     end
     
-    def hole5 v
-      w = []
-      v.each{|i| w << [i]}
-      (v.size - 1).times{|i| w << [v[i], v[i + 1]]}
-      (v.size - 2).times{|i| w << [v[i], v[i + 1], v[i + 2]]}
-      w << v
-      w
+    def hole5 p
+      (1..4).map{|i| p.each_cons(i).to_a}.inject :+
     end
 
     def hole3 s
